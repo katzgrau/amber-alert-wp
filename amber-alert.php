@@ -57,9 +57,10 @@ function amberalert_admin()
 }
 
 function amberalert_footer() {
+    $settings = AmberAlert_Utility::getAmberAlertSettings();
     $alert = AmberAlert_Utility::getTodaysAlert();
 
-    if($alert):
+    if($alert && $settings->show_ribbon):
 ?>
     <script>window.amber_alert = <?php echo json_encode($alert) ?></script>
     <script type="text/template" id="amber-alert-template">
@@ -70,56 +71,54 @@ function amberalert_footer() {
                     <tr>
                         <td style="width:150px;"><img src="{{photo}}" style="width: 150px;" alt="Amber Alert: {{firstName}} {{lastName}}" /></td>
                         <td style="width: calc(100% - 150px);">
-                            <td class="table-data" style="width: 100%;">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            Missing Since: {{missingDate}}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Name: Katie Anderson
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            From: Red Bank, Monmouth Country, NJ
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Height: 5' 5
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Skin: Caucasian
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Skin: Caucasian
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Description: Katie was last seen leaving Trader Joe's
-                                            in Shrewsbury NJ.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Contact if Found: Paterson Police Department (New Jersey) 1-973-321-1111
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=#<?php echo urlencode('http://www.missingkids.com/poster/NCMC/1244151/1') ?>">Please share on Facebook</a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
+                            <table style="width:100%;" class="table-data">
+                                <tr>
+                                    <td>
+                                        Missing Since: {{missingDate}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Name: Katie Anderson
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        From: Red Bank, Monmouth Country, NJ
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Height: 5' 5
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Skin: Caucasian
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Skin: Caucasian
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Description: Katie was last seen leaving Trader Joe's
+                                        in Shrewsbury NJ.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Contact if Found: Paterson Police Department (New Jersey) 1-973-321-1111
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=#<?php echo urlencode('http://www.missingkids.com/poster/NCMC/1244151/1') ?>">Please share on Facebook</a>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                 </table>

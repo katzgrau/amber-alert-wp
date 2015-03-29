@@ -1,24 +1,24 @@
 .amber-alert {
     font-family: Arial;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bolder;
     background-color: #FFBF00;
     color: white;
-    padding: 2px;
+    padding: 4px;
     width: 100%;
-    z-index: 100;
+    z-index: 1000000;
     position: fixed;
     text-align: center;
     -webkit-transition: max-height 0.8s, background .1s linear;
     -moz-transition: max-height 0.8s, background .1s linear;
     -ms-transition: max-height 0.8s, background .1s linear;
     transition: max-height 0.8s, background .1s linear;
-    max-height: 30px;
+    max-height: 26px;
     overflow: hidden;
 }
 
 .amber-alert:hover {
-    max-height: 500px;
+    max-height: 450px;
     background: darken(#FFBF00, 15%);
 }
 
