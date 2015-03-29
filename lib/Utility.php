@@ -2,6 +2,24 @@
 
 class AmberAlert_Utility
 {
+    public static function getTodaysAlert() {
+        return self::mockAlert();
+
+        $settings = self::getAmberAlertSettings();
+
+        $alert = AmberAlert_Cache::get('alert');
+
+        if($alert) return $alert;
+
+        $alert = AmberAlert::getMostRecentAlertByState($settings->state);
+
+        if(date('Y-m-d', strtotime($alert->missingDate)) == date('Y-m-d')) {
+            AmberAlert_Cache::set('alert', $alert, ($settings->hold_for * 24 * 60 * 60));
+        } else {
+            return null;
+        }
+    }
+
     public static function getAmberAlertSettings() {
         $defaults = array (
             'state' => 'NJ',
@@ -115,5 +133,62 @@ class AmberAlert_Utility
     public static function getVendorBaseURL()
     {
         return self::getAmberBaseURL() . 'public/vendor/';
+    }
+
+    public static function mockAlert()
+    {
+        return (object)array (
+            'hasAgedPhoto' => false,
+            'hasExtraPhoto' => false,
+            'possibleLocation' => "",
+            'caseNumber' => "1244449",
+            'orgPrefix' => "NCMC",
+            'seqNumber' => 1,
+            'langId' => "en_US",
+            'userLangId' => "en_US",
+            'firstName' => "TYPHANNY",
+            'lastName' => "REZABALA",
+            'middleName' => "",
+            'approxAge' => "",
+            'sex' => "female",
+            'race' => "hispanic",
+            'birthDate' => "Jun 5, 1998 12' =>00' =>00 AM",
+            'height' => 63,
+            'heightInInch' => true,
+            'weight' => 125,
+            'weightInPound' => true,
+            'eyeColor' => "brown",
+            'hairColor' => "brown",
+            'hasPhoto' => true,
+            'hasThumbnail' => true,
+            'hasPoster' => true,
+            'otherChildList' => [ ],
+            'otherCsawList' => [ ],
+            'caseType' => "endangeredRunaway",
+            'missingDate' => "Nov 14, 2014 12:00:00 AM",
+            'missingCity' => "UNION CITY",
+            'missingCounty' => "Hudson",
+            'missingState' => "NJ",
+            'missingProvince' => "",
+            'missingCountry' => "US",
+            'circumstance' => "Typhanny may be in the company of a male. They are believed to be in Guttenberg, New Jersey.",
+            'profileNarrative' => "",
+            'orgName' => "National Center for Missing & Exploited Children",
+            'orgContactInfo' => "1-800-843-5678 (1-800-THE-LOST)",
+            'orgLogo' => "NCMC_en_US.gif",
+            'isClearinghouse' => false,
+            'isChild' => true,
+            'repSightURL' => "",
+            'inMonth' => false,
+            'inDay' => false,
+            'age' => 16,
+            'altContact' => "Union City Police Department (New Jersey) 1-201-348-5790",
+            'photoMap' => "c1",
+            'ncic' => "",
+            'namUs' => "",
+            'maxHeight' => 0,
+            'maxWeight' => 0,
+            'photo' => 'http://broadstreet-common.s3.amazonaws.com/broadstreet-tmp/katie.png'
+        );
     }
 }

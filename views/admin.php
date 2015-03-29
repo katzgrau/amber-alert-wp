@@ -107,8 +107,7 @@
                                 Ribbon
                             </div>
                             <div class="desc nomargin">
-                                If set, this text will appear above injected ads to let readers
-                                know it's an ad and not part of the content
+                                Should the amber alert ribbon be enabled for your site?
                             </div>
                         </div>
                         <div class="control-container">

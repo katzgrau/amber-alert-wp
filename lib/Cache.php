@@ -26,7 +26,7 @@
  */
 class AmberAlert_Cache
 {
-    const CACHE_PREFIX          = 'WPEASYCACHE_';
+    const CACHE_PREFIX          = 'AMBERALERTCACHE_';
     const MAX_KEY_LENGTH        = 32;
 
     private static $_isWPLoaded = FALSE;

@@ -1,5 +1,42 @@
 .amber-alert {
-    background-color: red;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bolder;
+    background-color: #FFBF00;
     color: white;
-    padding: 100px;
+    padding: 2px;
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    text-align: center;
+    -webkit-transition: max-height 0.8s, background .1s linear;
+    -moz-transition: max-height 0.8s, background .1s linear;
+    -ms-transition: max-height 0.8s, background .1s linear;
+    transition: max-height 0.8s, background .1s linear;
+    max-height: 30px;
+    overflow: hidden;
+}
+
+.amber-alert:hover {
+    max-height: 500px;
+    background: darken(#FFBF00, 15%);
+}
+
+.amber-info {
+    padding-top: 20px;
+    width: 800px;
+    margin: 0 auto;
+}
+
+table, tbody, tr, td {
+    border: none !important;
+    border-width: 0;
+}
+
+.table-data td, .table-data tr {
+    padding: 0px;
+}
+
+tr td {
+    vertical-align: middle;
 }
